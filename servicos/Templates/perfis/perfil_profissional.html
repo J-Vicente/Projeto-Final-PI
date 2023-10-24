@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil Profissional</title>
+    <link rel="stylesheet" href="{% static 'servicos/css/Style.css' %}" />
+  </head>
+  <body>
+    <main class="perfil-container">
+      <section>
+        <div class="perfil">
+          <img
+            src="{% static 'servicos/img/pintor_exemplo.jpg' %}"
+            alt="Exemplo de um profissional"
+          />
+          <div>
+            <h1>Roberto Maia</h1>
+            <p>Exemplo de descrição para o pintor</p>
+            <small class="perfil__total-servicos">
+              <strong>10</strong> serviços realizados
+            </small>
+          </div>
+        </div>
+        <div class="endereco">
+          <p>Rua Augustino Filozino - 2131</p>
+          <p>Centro</p>
+        </div>
+        <div class="avaliacao">
+          <img
+            src="{% static 'servicos/img/avaliacao.png' %}"
+            alt="Estrelas de avaliação"
+          />
+        </div>
+        <div class="acoes">
+          <a href="#">
+            <img
+              src="{% static 'servicos/img/icone_compartilhar.png' %}"
+              alt="Ícone de compartilhar"
+            />
+          </a>
+          <a href="#" class="acoes__botao">Mensagem</a>
+          <a href="#" class="acoes__botao">Contratar serviço</a>
+        </div>
+      </section>
+      <section>
+        <h1>Fotos do trabalho</h1>
+        <div class="fotos-perfil">
+          <img
+            src="{% static 'servicos/img/trabalho_exemplo.png' %}"
+            alt="Exemplo de trabalho"
+          />
+          <img
+            src="{% static 'servicos/img/trabalho_exemplo.png' %}"
+            alt="Exemplo de trabalho"
+          />
+          <img
+            src="{% static 'servicos/img/trabalho_exemplo.png' %}"
+            alt="Exemplo de trabalho"
+          />
+          <img
+            src="{% static 'servicos/img/trabalho_exemplo.png' %}"
+            alt="Exemplo de trabalho"
+          />
+          <img
+            src="{% static 'servicos/img/trabalho_exemplo.png' %}"
+            alt="Exemplo de trabalho"
+          />
+          <img
+            src="{% static 'servicos/img/trabalho_exemplo.png' %}"
+            alt="Exemplo de trabalho"
+          />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

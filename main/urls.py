@@ -16,13 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from servicos.views import index, listar
+from servicos.views import index, listar, perfil_profissional, perfil_usuario
 from . import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('/listar',listar, name='listar'),
-    path('accounts/', include('django.contrib.auth.urls')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("admin/", admin.site.urls),
+    path("", index, name="index"),
+    path("/listar", listar, name="listar"),
+    path("perfil-profissional", perfil_profissional, name="perfil_profissional"),
+    path("perfil-usuario", perfil_usuario, name="perfil_usuario"),
+    path("accounts/", include("django.contrib.auth.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
