@@ -36,9 +36,16 @@
                   <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a style="color: rgb(238, 237, 237);" class="nav-link" href="{% url 'login' %}">Entrar</a>
-              </li>        
+              <li class="nav-item dropdown">
+                <a style="color: rgb(238, 237, 237);" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Adrielyson Kaiã
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'perfil_cliente' %}">Meu Pefil</a></li>
+                  <li><a class="dropdown-item" href="{% url 'index' %}">Sair</a></li>
+                </ul>
+              </li> 
+                 
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Busque profissionais..." aria-label="Search">

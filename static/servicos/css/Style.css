@@ -248,3 +248,41 @@ input:focus {
 .avaliacao_cliente__estrelas img {
   width: 100px;
 }
+
+.link_cadastro{
+  text-decoration:none;
+  color:#fff ;
+}
+.form_custom{
+  background-color: rgb(213, 231, 214) !important;
+  width: 80% !important;
+  margin-left: 10%;
+}
+.form_organization{
+  padding-top: 1rem;
+}
+.foto_perfil{
+  width: 1rem;
+  height: 1rem;
+  border-radius: 5rem;
+}
+.cidade_form, .foto_form, .senha1_form, .senha2_form{
+  width: 50% !important;
+}
+.cidade_form, .foto_form, .senha1_form{ 
+  padding-right: 0.5rem;
+}
+.estado_form, .cep_form, .celular_form, .cpf_form{
+  width: 25% !important;
+  padding-left: 1rem ;
+}
+.adicionar{
+  height: 2rem;
+  margin-left: 2rem;
+  border-style: solid;
+  border-radius: 0.5rem;
+  margin-top: 0.7rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-weight:bold;
+}
