@@ -1,17 +1,18 @@
 {% extends 'servicos/base.html' %}
   {% block content %}  
     {% load static %}
+    {% for i in cliente %}
         <div class="perfil-container">
           <section>
             <div class="perfil">
               <img
-                src="{% static 'servicos/img/cliente_exemplo.jpg' %}"
+                src="{{ i.foto_perfil.url }}"
                 alt="Exemplo de um cliente"
               />
               <div>
-                <h1>Adrielyson Kaiã</h1>
+                <h1>{{i.nome}}</h1>
                 <div class="flex">
-                  <p>Exemplo de descrição para o cliente</p>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem, et, incidunt eaque id eveniet voluptatem sint enim beatae delectus dolore fugiat accusantium officiis totam odio dolor dolores repellendus sunt quibusdam.</p>
                   <img src="{% static 'servicos/img/icone_editar.png' %}" alt="" style="width: 16px; height: 16px; margin-top: 5px;">
                 </div>
                 <small class="perfil__total-servicos">
@@ -20,8 +21,8 @@
               </div>
             </div>
             <div class="endereco">
-              <p>Rua Augustino Filozino - 2131</p>
-              <p>Centro</p>
+              <p>{{ i.endereco }}</p>
+              <p>{{ i.cidade }} {{ i.estado }}</p>
             </div>
             <div class="avaliacao">
               <img
@@ -81,4 +82,5 @@
             </div>
           </section>
         </div>  
+    {% endfor %}
   {% endblock %}

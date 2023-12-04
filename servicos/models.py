@@ -1,3 +1,48 @@
 from django.db import models
 
 # Create your models here.
+
+class Cliente(models.Model):
+    nome = models.CharField(max_length=100)
+    sobrenome = models.CharField(max_length=100)
+    email = models.EmailField()
+    foto_perfil = models.ImageField(upload_to='images')
+    celular = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=14)
+    endereco = models.CharField(max_length=200)
+    estado = models.CharField(max_length=2)
+    cep = models.CharField(max_length=9)
+    cidade = models.CharField(max_length=150, default='')
+    # descricao = models.TextField()
+
+    def __str__(self):
+        return self.nome + self.sobrenome
+
+class Profissional(models.Model):
+    nome = models.CharField(max_length=100)
+    sobrenome = models.CharField(max_length=100)
+    email = models.EmailField()
+    foto_perfil = models.ImageField(upload_to='images')
+    celular = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=14)
+    endereco = models.CharField(max_length=200)
+    estado = models.CharField(max_length=2)
+    cep = models.CharField(max_length=9)
+    cidade = models.CharField(max_length=150, default='')
+    servico = models.CharField(max_length=100)
+    # descricao = models.TextField()
+
+    def __str__(self):
+        return self.nome + self.sobrenome
+
+class Contrato(models.Model):
+    servico = models.CharField(max_length=100, default='')
+    data = models.DateField()
+    valor = models.FloatField()
+    duracao_prevista = models.IntegerField()
+    cliente = models.ForeignKey("Cliente",on_delete=models.CASCADE,)
+    profissional = models.ForeignKey("Profissional",on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.servico+'-'+data
+

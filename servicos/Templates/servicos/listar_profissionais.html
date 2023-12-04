@@ -2,131 +2,23 @@
   {% block content %}  
     {% load static %}
     <h2 style="margin: 1rem;">Resultados para: "Pintura"</h2>
-    <div class="flex" style="margin: 2rem 0 2rem 0 ;">
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
+    {% for i in profissional %}
+      <div class="flex" style="margin: 2rem 0 2rem 0 ;">
+        <div class="card card_custom" >
+          <img src="{{ i.foto_perfil.url }}" class="img_profissional" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">{{ i.nome }} {{ i.sobrenome}}</h3>
+            <strong>{{ i.servico }}</strong>
+            <p  style="margin-top: 1rem ;">{{ i.cidade }} {{ i.estado }}</p>
+            <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
+          </div>
+          <div class="card-body flex" style="justify-content: space-evenly;">
+            <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
+            <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
+          </div>
+        </div>     
       </div>
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>     
-    </div>
-
-    <div class="flex" style="margin: 2rem 0 2rem 0 ;">
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>     
-    </div>
-
-    <div class="flex" style="margin: 2rem 0 2rem 0 ;">
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>
-      <div class="card card_custom" >
-        <img src="{% static 'servicos/img/pintor_exemplo.jpg' %}" class="img_profissional" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Francisco José da Silva</h3>
-          <strong>Pintura</strong>
-          <p  style="margin-top: 1rem ;">Pau dos Ferros RN</p>
-          <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
-        </div>
-        <div class="card-body flex" style="justify-content: space-evenly;">
-          <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
-          <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
-        </div>
-      </div>     
-    </div>
+    {% endfor %}
 
     <nav aria-label="Page navigation example">
       <ul class="pagination flex" style="justify-content: center; padding-bottom: 2rem;">
