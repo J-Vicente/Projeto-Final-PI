@@ -2,6 +2,18 @@ from django.db import models
 
 # Create your models here.
 
+
+ESTADOS = [('0', '--Selecione--'), ('ac', 'AC'), ('al', 'AL'), ('ap', 'AP'), ('am', 'AM'), 
+    ('ba', 'BA'), ('ce', 'CE'), ('df', 'DF'), ('es', 'ES'), ('go', 'GO'), ('ma', 'MA'), 
+    ('mt', 'MT'), ('ms', 'MS'), ('mg', 'MG'), ('pa', 'PA'), ('pb', 'PB'), ('pr', 'PR'), 
+    ('pe', 'PE'), ('pi', 'PI'), ('rj', 'RJ'), ('rn', 'RN'), ('rs', 'RS'), ('ro', 'RO'), 
+    ('rr', 'RR'), ('sc', 'SC'), ('sp', 'SP'), ('se', 'SE'), ('to', 'TO')]
+
+SERVICOS = [('0', '--Selecione--'),('babá', 'Babá'), ('cozinheiro(a)', 'Cozinheiro(a)'), ('eletricista', 'Eletricista'), 
+    ('encanador(a)', 'Encanador(a)'), ('faxina', 'Faxina'), ('informática', 'Informática'), ('jardinagem', 'Jardinagem'), 
+    ('lava-jato', 'Lava-jato'), ('pintura', 'Pintura')]
+
+
 class Cliente(models.Model):
     nome = models.CharField(max_length=100)
     sobrenome = models.CharField(max_length=100)
@@ -10,7 +22,7 @@ class Cliente(models.Model):
     celular = models.CharField(max_length=11)
     cpf = models.CharField(max_length=14)
     endereco = models.CharField(max_length=200)
-    estado = models.CharField(max_length=2)
+    estado = models.CharField(max_length=2, choices=ESTADOS)
     cep = models.CharField(max_length=9)
     cidade = models.CharField(max_length=150, default='')
     # descricao = models.TextField()
@@ -26,10 +38,10 @@ class Profissional(models.Model):
     celular = models.CharField(max_length=11)
     cpf = models.CharField(max_length=14)
     endereco = models.CharField(max_length=200)
-    estado = models.CharField(max_length=2)
+    estado = models.CharField(max_length=2, choices=ESTADOS)
     cep = models.CharField(max_length=9)
     cidade = models.CharField(max_length=150, default='')
-    servico = models.CharField(max_length=100)
+    servico = models.CharField(max_length=100, choices=SERVICOS)
     # descricao = models.TextField()
 
     def __str__(self):

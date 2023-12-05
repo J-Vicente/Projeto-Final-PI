@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from .form import ClienteForm, ProfissionalForm
 
@@ -23,6 +23,7 @@ def perfil_cliente(request):
 
 def cadastro_cliente(request):
     if request.method == 'POST':
+        # request.user.is_authenticated
         form = ClienteForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
@@ -39,7 +40,7 @@ def cadastro_profissional(request):
         if form.is_valid():
             form.save()
             form = ProfissionalForm()
-            return redirect('index')
+            return redirect('perfil_profissional')
     else:
         form = ProfissionalForm()
 

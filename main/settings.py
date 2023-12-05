@@ -120,7 +120,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'perfil_cliente'
 
 LOGOUT_REDIRECT_URL = '/accounts/login'
 

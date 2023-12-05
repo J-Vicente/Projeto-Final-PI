@@ -2,7 +2,7 @@
   {% block content %}  
     {% load static %}  
       <div class="form-control form_custom" >
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="row form_organization">
             <label for="exampleInputEmail1" class="form-label">Nome Completo:</label>
