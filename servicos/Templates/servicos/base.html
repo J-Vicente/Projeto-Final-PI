@@ -25,20 +25,20 @@
                   Serviços
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Babá</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Cozinheiro(a)</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Eletricista</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Encanador(a)</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Faxina</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Informática</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Jardinagem</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' %}">Lava-jato</a></li>
                   <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
                 <a style="color: rgb(238, 237, 237);" class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Adrielyson Kaiã
+                  {{ user.username }}
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'perfil_cliente' %}">Meu Pefil</a></li>

@@ -1,16 +1,15 @@
 {% extends 'servicos/base.html' %}
   {% block content %}  
     {% load static %}
-    {% for i in cliente %}
         <div class="perfil-container">
           <section>
             <div class="perfil">
               <img
-                src="{{ i.foto_perfil.url }}"
+                src="{{ cliente.foto_perfil.url }}"
                 alt="Exemplo de um cliente"
               />
               <div>
-                <h1>{{i.nome}}</h1>
+                <h1>{{cliente.nome}}</h1>
                 <div class="flex">
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem, et, incidunt eaque id eveniet voluptatem sint enim beatae delectus dolore fugiat accusantium officiis totam odio dolor dolores repellendus sunt quibusdam.</p>
                   <img src="{% static 'servicos/img/icone_editar.png' %}" alt="" style="width: 16px; height: 16px; margin-top: 5px;">
@@ -21,8 +20,8 @@
               </div>
             </div>
             <div class="endereco">
-              <p>{{ i.endereco }}</p>
-              <p>{{ i.cidade }} {{ i.estado }}</p>
+              <p>{{ cliente.endereco }}</p>
+              <p>{{ cliente.cidade }} {{ i.estado }}</p>
             </div>
             <div class="avaliacao">
               <img
@@ -37,7 +36,7 @@
                   alt="Ícone de compartilhar"
                 />
               </a>
-              <a href="#" class="acoes__botao">Editar perfil</a>
+              <a href="" class="acoes__botao">Editar perfil</a>
               <a href="#" class="acoes__botao">Adicionar foto</a>
             </div>
           </section>
@@ -82,5 +81,4 @@
             </div>
           </section>
         </div>  
-    {% endfor %}
   {% endblock %}

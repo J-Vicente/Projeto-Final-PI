@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -25,7 +25,13 @@ class Cliente(models.Model):
     estado = models.CharField(max_length=2, choices=ESTADOS)
     cep = models.CharField(max_length=9)
     cidade = models.CharField(max_length=150, default='')
-    # descricao = models.TextField()
+    usuario = models.ForeignKey(User,on_delete=models.CASCADE, null=True,blank=True)
+
+    def save(self, *args, **kwargs):
+        # Se o usuário não estiver definido, associe-o ao usuário atual
+        novo_usuario = User.objects.create_user(self.nome, self.email, 'Ifrn12345')
+        novo_usuario.save()
+        super(Cliente, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.nome + self.sobrenome
