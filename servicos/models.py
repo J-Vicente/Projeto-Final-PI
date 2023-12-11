@@ -76,5 +76,6 @@ class Contrato(models.Model):
     ativo = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.servico+'-'+data
+        date = self.data.strftime("%m/%d/%Y")
+        return self.servico+'-'+date
 

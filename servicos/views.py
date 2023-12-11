@@ -118,7 +118,7 @@ def contratos_clientes(request):
             i.confirmado = 'Confirmado'
         else:
             i.confirmado = 'Aguardando confiramção'
-            
+         
     context = {'contrato': contrato, }
     return render(request, "servicos/contratos_cliente.html", context)
 
@@ -129,16 +129,20 @@ def contrato_cancelar(request,id):
 
 def contratos_profissional(request):
     profissionais = Profissional.objects.filter(nome=request.user.username).first()
-    contrato = Contrato.objects.filter(profissionais=profissionais)
-    if contrato.confirmado == True:
-        contrato.confirmado = 'Confirmado'
-    else:
-        contrato.confirmado = 'Aguardando confiramção'
+    contrato = Contrato.objects.filter(profissional=profissionais, ativo=True)
+    for i in contrato:
+        if i.confirmado == True:
+            i.confirmado = 'Confirmado'
+        else:
+            i.confirmado = 'Aguardando confiramção'
+        
     context = {'contrato': contrato, }
     return render(request, "servicos/contratos_profissional.html", context)
 
 def contrato_confirmar(request,id):
     contrato = get_object_or_404(Contrato, id=id)
+    print(contrato)
     contrato.confirmado = True  
-    return redirect('contrato_profissional') 
+    contrato.save()
+    return redirect('contratos_profissional') 
 
