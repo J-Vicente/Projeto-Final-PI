@@ -1,7 +1,7 @@
 {% extends 'servicos/base.html' %}
   {% block content %}  
     {% load static %}
-    <h2 style="margin: 1rem;">Resultados para: "Pintura"</h2>
+    <h2 style="margin: 1rem;">Resultados para: "{{servico}}"</h2>
     {% for i in profissional %}
       <div class="flex" style="margin: 2rem 0 2rem 0 ;">
         <div class="card card_custom" >
@@ -10,7 +10,7 @@
             <h3 class="card-title">{{ i.nome }} {{ i.sobrenome}}</h3>
             <strong>{{ i.servico }}</strong>
             <p  style="margin-top: 1rem ;">{{ i.cidade }} {{ i.estado }}</p>
-            <p class="card-text" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, ipsa! Magnam inventore nostrum, fugiat, eligendi ipsa eum beatae fugit nam saepe incidunt totam non consequatur dolorum necessitatibus? Quaerat, cum voluptatem?</p>
+            <p class="card-text" style="text-align: justify;">{{ i.descricao }}</p>
           </div>
           <div class="card-body flex" style="justify-content: space-evenly;">
             <button type="button" class="btn btn-success btn_ajuste">Contratar</button>

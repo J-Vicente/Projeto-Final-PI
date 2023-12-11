@@ -39,4 +39,5 @@ class ProfissionalForm(ModelForm):
             'cidade' : forms.TextInput(attrs={'class': 'form-control' }),                     
             'estado' : forms.Select(attrs={'class': 'form-control'}),      
             'servico' : forms.Select(attrs={'class': 'form-control' } ),
+            'descricao' : forms.TextInput(attrs={'class': 'form-control' }),
         }

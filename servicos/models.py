@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 # Create your models here.
 
 
@@ -26,11 +26,13 @@ class Cliente(models.Model):
     cep = models.CharField(max_length=9)
     cidade = models.CharField(max_length=150, default='')
     usuario = models.ForeignKey(User,on_delete=models.CASCADE, null=True,blank=True)
+    is_profissional = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        # Se o usuário não estiver definido, associe-o ao usuário atual
         novo_usuario = User.objects.create_user(self.nome, self.email, 'Ifrn12345')
         novo_usuario.save()
+        grupo_clientes, created = Group.objects.get_or_create(name='clientes')
+        novo_usuario.groups.add(grupo_clientes)
         super(Cliente, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -48,7 +50,18 @@ class Profissional(models.Model):
     cep = models.CharField(max_length=9)
     cidade = models.CharField(max_length=150, default='')
     servico = models.CharField(max_length=100, choices=SERVICOS)
-    # descricao = models.TextField()
+    descricao = models.TextField(default='descrição')
+    usuario = models.ForeignKey(User,on_delete=models.CASCADE, null=True,blank=True)
+    is_profissional = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        # Se o usuário não estiver definido, associe-o ao usuário atual
+        novo_usuario = User.objects.create_user(self.nome, self.email, 'Ifrn12345')
+        novo_usuario.save()
+        grupo_profissionais, created = Group.objects.get_or_create(name='profissionais')
+        novo_usuario.groups.add(grupo_profissionais)
+        super(Profissional, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.nome + self.sobrenome

@@ -1,3 +1,18 @@
 Pillow==10.1.0
 Django==4.2.3
 django-widget-tweaks==1.5.0
+faker==20.1.0
+
+ALTERAR TEMPLATES DE PRFIL
+
+bara de pesquisa da navbar
+
+paginação na listagem e organização dos profissionais
+
+contrato
+
+login através do email
+
+usuário poder criar senha
+
+deixar a descrição do profissional mais customizável

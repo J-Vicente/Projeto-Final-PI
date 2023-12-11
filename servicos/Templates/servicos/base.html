@@ -25,26 +25,32 @@
                   Serviços
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Babá</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Cozinheiro(a)</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Eletricista</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Encanador(a)</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Faxina</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Informática</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Jardinagem</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Lava-jato</a></li>
-                  <li><a class="dropdown-item" href="{% url 'listar' %}">Pintura</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='babá' %}">Babá</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='cozinnheiro(a)' %}">Cozinheiro(a)</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='eletricista' %}">Eletricista</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='encanador(a)' %}">Encanador(a)</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='faxina' %}">Faxina</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='informática' %}">Informática</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='jardinagem' %}">Jardinagem</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='lava-jato' %}">Lava-jato</a></li>
+                  <li><a class="dropdown-item" href="{% url 'listar' servico='pintura' %}">Pintura</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a style="color: rgb(238, 237, 237);" class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ user.username }}
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'perfil_cliente' %}">Meu Pefil</a></li>
-                  <li><a class="dropdown-item" href="{% url 'login' %}">Sair</a></li>
-                </ul>
-              </li> 
+              {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                  <a style="color: rgb(238, 237, 237);" class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ user.username }}
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'perfil' %}">Meu Perfil</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+                  </ul>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a style="color: rgb(238, 237, 237);" class="nav-link" href="{% url 'login' %}">Entrar</a>
+                </li>
+              {% endif %}
                  
             </ul>
             <form class="d-flex" role="search">
