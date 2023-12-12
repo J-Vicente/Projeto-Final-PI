@@ -23,13 +23,19 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="index"),
-    path("listar/<str:servico>", listar, name="listar"),
+    path("listar/<str:servico>/", listar, name="listar"),
     path("perfil/cliente/", perfil_cliente, name="perfil_cliente"),
     path('cadastro/cliente/',cadastro_cliente, name='cadastro_cliente'),
     path('perfil/cliente/editar/<int:id>/',editar_cliente, name='editar_cliente'),
     path("perfil/profissional/", perfil_profissional, name="perfil_profissional"),
     path('cadastro/profissional/', cadastro_profissional, name='cadastro_profissional'),
+    path('perfil/profissional/editar/<int:id>/',editar_profissional, name='editar_profissional'),
     path('perfil/', perfil, name='perfil'),
+    path('contrato/<int:id>/', contrato, name='contrato'),
+    path('contrato/cancelar/<int:id>/', contrato_cancelar, name='contrato_cancelar'),
+    path('contrato/cliente/meuscontratos/', contratos_clientes, name='contratos_clientes'),
+    path('contrato/confirmar/<int:id>/', contrato_confirmar, name='contrato_confirmar'),
+    path('contrato/profissional/meuscontratos/', contratos_profissional, name='contratos_profissional'),
     path("accounts/", include("django.contrib.auth.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

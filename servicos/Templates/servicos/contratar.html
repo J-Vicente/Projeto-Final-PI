@@ -1,4 +1,26 @@
 {% extends 'servicos/base.html' %}
+{% load widget_tweaks %}
   {% block content %}  
-  
+  <form method="post">
+    {% csrf_token %}
+    <div class="centralizar flex">
+      <div>
+        <div class="form_organization">
+          <label for="inputState" class="form-label">Data de realização do serviço:</label>
+          {% render_field form.data type="date" class="form-control" %}
+        </div>
+        <div class="form_organization">
+          <label for="inputState" class="form-label">Duração prevista (em horas):</label>
+          {{ form.duracao_prevista }}
+        </div>
+        <div class="form_organization">
+          <label for="inputState" class="form-label">Valor do serviço:</label>
+          {{ form.valor }}
+        </div>
+        <div class=" flex centralizar form_organization" style="margin: 2rem 0 2rem 0;">                
+          <button type="submit" class="btn btn-success">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+  </form>
   {% endblock %} 

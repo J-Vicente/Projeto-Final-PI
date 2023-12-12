@@ -36,8 +36,8 @@
                 alt="Ícone de compartilhar"
               />
             </a>
-            <a href="#" class="acoes__botao">Mensagem</a>
-            <a href="#" class="acoes__botao">Contratar serviço</a>
+            <a href="{% url 'editar_profissional' profissional.id %}" class="acoes__botao">Editar perfil</a>
+            <a href="{% url 'contratos_profissional' %}" class="acoes__botao">Meus contratos</a>
           </div>
         </section>
         <section>

@@ -3,13 +3,14 @@ Django==4.2.3
 django-widget-tweaks==1.5.0
 faker==20.1.0
 
+
 ALTERAR TEMPLATES DE PRFIL
 
 bara de pesquisa da navbar
 
 paginação na listagem e organização dos profissionais
 
-contrato
+melhorar o contrato se der tempo(encerra caso passe do tempo)
 
 login através do email
 

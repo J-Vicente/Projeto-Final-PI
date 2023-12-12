@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Cliente, Profissional
+from .models import *
 
 
 
@@ -40,4 +40,15 @@ class ProfissionalForm(ModelForm):
             'estado' : forms.Select(attrs={'class': 'form-control'}),      
             'servico' : forms.Select(attrs={'class': 'form-control' } ),
             'descricao' : forms.TextInput(attrs={'class': 'form-control' }),
+        }
+
+class ContratoForm(ModelForm):
+
+    class Meta:
+        model = Contrato
+        fields = 'data','valor','duracao_prevista'
+        widgets = {
+            'data' : forms.DateInput(attrs={'type': 'date'}),
+            'valor' : forms.NumberInput(attrs={'class': 'form-control' }),
+            'duracao_prevista' : forms.NumberInput(attrs={'class': 'form-control' }),
         }

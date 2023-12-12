@@ -36,8 +36,8 @@
                   alt="Ícone de compartilhar"
                 />
               </a>
-              <a href="" class="acoes__botao">Editar perfil</a>
-              <a href="#" class="acoes__botao">Adicionar foto</a>
+              <a href="{% url 'editar_cliente' cliente.id %}" class="acoes__botao">Editar perfil</a>
+              <a href="{% url 'contratos_clientes'%}" class="acoes__botao">Meus contratos</a>
             </div>
           </section>
           <section>

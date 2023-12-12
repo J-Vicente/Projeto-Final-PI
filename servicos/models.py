@@ -36,7 +36,7 @@ class Cliente(models.Model):
         super(Cliente, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.nome + self.sobrenome
+        return self.nome +' '+ self.sobrenome
 
 class Profissional(models.Model):
     nome = models.CharField(max_length=100)
@@ -55,7 +55,6 @@ class Profissional(models.Model):
     is_profissional = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
-        # Se o usuário não estiver definido, associe-o ao usuário atual
         novo_usuario = User.objects.create_user(self.nome, self.email, 'Ifrn12345')
         novo_usuario.save()
         grupo_profissionais, created = Group.objects.get_or_create(name='profissionais')
@@ -64,7 +63,7 @@ class Profissional(models.Model):
 
 
     def __str__(self):
-        return self.nome + self.sobrenome
+        return self.nome +' '+ self.sobrenome
 
 class Contrato(models.Model):
     servico = models.CharField(max_length=100, default='')
@@ -73,6 +72,8 @@ class Contrato(models.Model):
     duracao_prevista = models.IntegerField()
     cliente = models.ForeignKey("Cliente",on_delete=models.CASCADE,)
     profissional = models.ForeignKey("Profissional",on_delete=models.CASCADE,)
+    confirmado = models.BooleanField(default=False)
+    ativo = models.BooleanField(default=True)
 
     def __str__(self):
         return self.servico+'-'+data

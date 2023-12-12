@@ -1,0 +1,19 @@
+{% extends 'servicos/base.html' %}
+  {% block content %}  
+    <div class="centralizar flex">
+        {% for i in contrato %}
+            <div class="card">
+                <div class="card-header">
+                {{contrato.servico}}
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">{{contrato.profissional}}</h5>
+                <p class="card-text">Data: {{contrato.data}}  Duração prevista: {{contrato.duracao_prevista}}  Valor: {{contrato.valor}} </p>
+                <p class="card-text">Serviços de: {{contrato.servico}}  </p>
+                <a href="contrato_cancelar" class="btn btn-success">Cancelar</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+  {% endblock %}

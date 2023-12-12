@@ -13,7 +13,7 @@
             <p class="card-text" style="text-align: justify;">{{ i.descricao }}</p>
           </div>
           <div class="card-body flex" style="justify-content: space-evenly;">
-            <button type="button" class="btn btn-success btn_ajuste">Contratar</button>
+            <a href="{% url 'contrato' i.id %}"><button type="button" class="btn btn-success btn_ajuste">Contratar</button></a>
             <button type="button" class="btn btn-success btn_ajuste">Ver mais</button>
           </div>
         </div>     
