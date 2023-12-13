@@ -53,7 +53,7 @@
               {% endif %}
                  
             </ul>
-            <form class="d-flex" role="search">
+            <form class="d-flex" role="search" method="GET" action="{% url 'buscar_profissionais' %}">
               <input class="form-control me-2" type="search" placeholder="Busque profissionais..." aria-label="Search">
               <button class="btn btn-success" type="submit">Buscar</button>
             </form>

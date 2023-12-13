@@ -7,16 +7,13 @@
               <img
                 src="{{ cliente.foto_perfil.url }}"
                 alt="Exemplo de um cliente"
+                style="width: 10rem;"
               />
               <div>
-                <h1>{{cliente.nome}}</h1>
+                <h1>{{cliente}}</h1>
                 <div class="flex">
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem, et, incidunt eaque id eveniet voluptatem sint enim beatae delectus dolore fugiat accusantium officiis totam odio dolor dolores repellendus sunt quibusdam.</p>
-                  <img src="{% static 'servicos/img/icone_editar.png' %}" alt="" style="width: 16px; height: 16px; margin-top: 5px;">
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem, et, incidunt eaque id eveniet voluptatem sint enim beatae delectus dolore fugiat accusantium officiis totam odio dolor dolores repellendus sunt quibusdam.</p>    
                 </div>
-                <small class="perfil__total-servicos">
-                  <strong>10</strong> serviços contratados
-                </small>
               </div>
             </div>
             <div class="endereco">
@@ -68,7 +65,7 @@
                     src="{% static 'servicos/img/icone_usuario.png' %}"
                     alt="Ícone de usuário"
                   />
-                  <p>João Pedro é sensacional! Faz tudo bem feito</p>
+                  <p>Achei sensacional! Faz tudo bem feito</p>
                 </div>
                 <div class="avaliacao_cliente__estrelas">
                   <img

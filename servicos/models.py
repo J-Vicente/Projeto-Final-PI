@@ -3,11 +3,11 @@ from django.contrib.auth.models import User, Group
 # Create your models here.
 
 
-ESTADOS = [('0', '--Selecione--'), ('ac', 'AC'), ('al', 'AL'), ('ap', 'AP'), ('am', 'AM'), 
-    ('ba', 'BA'), ('ce', 'CE'), ('df', 'DF'), ('es', 'ES'), ('go', 'GO'), ('ma', 'MA'), 
-    ('mt', 'MT'), ('ms', 'MS'), ('mg', 'MG'), ('pa', 'PA'), ('pb', 'PB'), ('pr', 'PR'), 
-    ('pe', 'PE'), ('pi', 'PI'), ('rj', 'RJ'), ('rn', 'RN'), ('rs', 'RS'), ('ro', 'RO'), 
-    ('rr', 'RR'), ('sc', 'SC'), ('sp', 'SP'), ('se', 'SE'), ('to', 'TO')]
+ESTADOS = [('0', '--Selecione--'), ('AC', 'AC'), ('AL', 'AL'), ('AP', 'AP'), ('AM', 'AM'), 
+    ('BA', 'BA'), ('CE', 'CE'), ('DF', 'DF'), ('ES', 'ES'), ('GO', 'GO'), ('MA', 'MA'), 
+    ('MT', 'MT'), ('MS', 'MS'), ('MG', 'MG'), ('PA', 'PA'), ('PB', 'PB'), ('PR', 'PR'), 
+    ('PE', 'PE'), ('PI', 'PI'), ('RJ', 'RJ'), ('RN', 'RN'), ('RS', 'RS'), ('RO', 'RO'), 
+    ('RR', 'RR'), ('SC', 'SC'), ('SP', 'SP'), ('SE', 'SE'), ('TO', 'TO')]
 
 SERVICOS = [('0', '--Selecione--'),('babá', 'Babá'), ('cozinheiro(a)', 'Cozinheiro(a)'), ('eletricista', 'Eletricista'), 
     ('encanador(a)', 'Encanador(a)'), ('faxina', 'Faxina'), ('informática', 'Informática'), ('jardinagem', 'Jardinagem'), 
@@ -17,6 +17,7 @@ SERVICOS = [('0', '--Selecione--'),('babá', 'Babá'), ('cozinheiro(a)', 'Cozinh
 class Cliente(models.Model):
     nome = models.CharField(max_length=100)
     sobrenome = models.CharField(max_length=100)
+    senha = models.CharField(max_length=15, default='Ifrn12345')
     email = models.EmailField()
     foto_perfil = models.ImageField(upload_to='images')
     celular = models.CharField(max_length=11)
@@ -29,7 +30,7 @@ class Cliente(models.Model):
     is_profissional = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        novo_usuario = User.objects.create_user(self.nome, self.email, 'Ifrn12345')
+        novo_usuario = User.objects.create_user(self.nome, self.email, self.senha)
         novo_usuario.save()
         grupo_clientes, created = Group.objects.get_or_create(name='clientes')
         novo_usuario.groups.add(grupo_clientes)
@@ -38,9 +39,14 @@ class Cliente(models.Model):
     def __str__(self):
         return self.nome +' '+ self.sobrenome
 
+class ProfissionalManager(models.Manager):
+    def buscar_por_nome(self, termo):
+        return self.filter(nome__icontains=termo) | self.filter(sobrenome__icontains=termo) 
+
 class Profissional(models.Model):
     nome = models.CharField(max_length=100)
     sobrenome = models.CharField(max_length=100)
+    senha = models.CharField(max_length=15, default='Ifrn12345')
     email = models.EmailField()
     foto_perfil = models.ImageField(upload_to='images')
     celular = models.CharField(max_length=11)
@@ -53,14 +59,14 @@ class Profissional(models.Model):
     descricao = models.TextField(default='descrição')
     usuario = models.ForeignKey(User,on_delete=models.CASCADE, null=True,blank=True)
     is_profissional = models.BooleanField(default=True)
+    objects = ProfissionalManager()
 
     def save(self, *args, **kwargs):
-        novo_usuario = User.objects.create_user(self.nome, self.email, 'Ifrn12345')
+        novo_usuario = User.objects.create_user(self.nome, self.email, self.senha)
         novo_usuario.save()
         grupo_profissionais, created = Group.objects.get_or_create(name='profissionais')
         novo_usuario.groups.add(grupo_profissionais)
         super(Profissional, self).save(*args, **kwargs)
-
 
     def __str__(self):
         return self.nome +' '+ self.sobrenome
@@ -78,4 +84,9 @@ class Contrato(models.Model):
     def __str__(self):
         date = self.data.strftime("%m/%d/%Y")
         return self.servico+'-'+date
+
+class Fotos_servico(models.Model):
+    imagem = models.ImageField(upload_to='images')
+    profissional = models.ForeignKey("Profissional",on_delete=models.CASCADE,)
+
 

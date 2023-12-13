@@ -20,6 +20,7 @@ class ClienteForm(ModelForm):
             'cep' : forms.TextInput(attrs={'class': 'form-control' }),
             'cidade' : forms.TextInput(attrs={'class': 'form-control' }),
             'estado' : forms.Select(attrs={'class': 'form-control'}),
+            'senha' : forms.TextInput(attrs={'class': 'form-control' }),
         }
 
 class ProfissionalForm(ModelForm):
@@ -40,6 +41,7 @@ class ProfissionalForm(ModelForm):
             'estado' : forms.Select(attrs={'class': 'form-control'}),      
             'servico' : forms.Select(attrs={'class': 'form-control' } ),
             'descricao' : forms.TextInput(attrs={'class': 'form-control' }),
+            'senha' : forms.TextInput(attrs={'class': 'form-control' }),
         }
 
 class ContratoForm(ModelForm):
@@ -52,3 +54,13 @@ class ContratoForm(ModelForm):
             'valor' : forms.NumberInput(attrs={'class': 'form-control' }),
             'duracao_prevista' : forms.NumberInput(attrs={'class': 'form-control' }),
         }
+
+class Fotos_servicoForm(ModelForm):
+
+    class Meta:
+        model = Fotos_servico
+        fields = '__all__'
+        widgets = {
+            'imagem' : forms.ClearableFileInput(attrs={'class': 'form-control' }),
+            'profissional' : forms.Select(attrs={'class': 'form-control' })
+        }    

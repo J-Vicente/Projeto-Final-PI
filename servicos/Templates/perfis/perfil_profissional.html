@@ -5,23 +5,22 @@
         <section>
           <div class="perfil">
             <img
-              src="{% static 'servicos/img/pintor_exemplo.jpg' %}"
+              src="{{ profissional.foto_perfil.url }}"
               alt="Exemplo de um profissional"
+              style="width: 15rem;"
             />
             <div>
-              <h1>Roberto Maia</h1>
+              <h1>{{profissional}}</h1>
               <div class="flex">
-                <p>Exemplo de descrição para o pintor</p>
+                <p>{{profissional.descricao}}</p>
                 <img src="{% static 'servicos/img/icone_editar.png' %}" alt="" style="width: 16px; height: 16px; margin-top: 5px;">
               </div>
-              <small class="perfil__total-servicos">
-                <strong>10</strong> serviços realizados
-              </small>
+              <p>serviços realizados:<strong> {{profissional.servico}}</strong></p> 
             </div>
           </div>
           <div class="endereco">
-            <p>Rua Augustino Filozino - 2131</p>
-            <p>Centro</p>
+            <p>{{profissional.endereco}}</p>
+            <p>{{profissional.cidade}} {{profissional.estado}}</p>
           </div>
           <div class="avaliacao">
             <img
@@ -40,36 +39,15 @@
             <a href="{% url 'contratos_profissional' %}" class="acoes__botao">Meus contratos</a>
           </div>
         </section>
-        <section>
+        <section style="padding-bottom: 5rem;">
           <div class="flex">
             <h1>Fotos do trabalho</h1>
-            <a href="" class="adicionar" style="text-decoration: none; color: black;">+</a>
+            <a href="{% url 'fotos_profissional' %}" class="adicionar" style="text-decoration: none; color: black;">+</a>
           </div>
           <div class="fotos-perfil">
-            <img
-              src="{% static 'servicos/img/trabalho_exemplo.png' %}"
-              alt="Exemplo de trabalho"
-            />
-            <img
-              src="{% static 'servicos/img/trabalho_exemplo.png' %}"
-              alt="Exemplo de trabalho"
-            />
-            <img
-              src="{% static 'servicos/img/trabalho_exemplo.png' %}"
-              alt="Exemplo de trabalho"
-            />
-            <img
-              src="{% static 'servicos/img/trabalho_exemplo.png' %}"
-              alt="Exemplo de trabalho"
-            />
-            <img
-              src="{% static 'servicos/img/trabalho_exemplo.png' %}"
-              alt="Exemplo de trabalho"
-            />
-            <img
-              src="{% static 'servicos/img/trabalho_exemplo.png' %}"
-              alt="Exemplo de trabalho"
-            />
+            {% for i in foto %}
+            <img src="{{ i.imagem.url }}"alt="Exemplo de trabalho" style="width: 15rem; height: 15rem;"/>
+            {% endfor %}          
           </div>
         </section>
       </div>

@@ -13,6 +13,7 @@
                 <p class="card-text"> Valor: {{i.valor}}R$ </p>
                 <p class="card-text"> Serviço de:<strong> {{i.servico}}</strong></p>
                 <a href="{% url 'contrato_confirmar' i.id%}" class="btn btn-success">Confirmar</a>
+                <a href="{% url 'contrato_cancelar' i.id%}" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
         {% endfor %}

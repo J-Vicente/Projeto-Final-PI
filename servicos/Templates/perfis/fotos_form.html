@@ -1,0 +1,22 @@
+{% extends 'servicos/base.html' %}
+  {% block content %}
+    {% load static %}  
+    <div class="centralizar flex">
+            <div class="card" style="margin-top: 2rem;background-color: rgb(0 255 66 / 62%) !important;">
+                <div class="card-header">
+                <Strong>Selecione uma foto dos seus serviços</Strong>             
+                </div >
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card-body" style="background-color:#28b775 !important;">
+                        <p class="card-text">{{form.imagem}}</p>
+                        <p class="card-text">{{form.profissional}}</p>
+                        <div class=" flex centralizar form_organization" style="margin: 2rem 0 2rem 0;">                
+                            <button type="submit" class="btn btn-success">Enviar</button>
+                        </div>
+                    </form>
+                </div>         
+            </div>
+    </div>
+
+  {% endblock %}

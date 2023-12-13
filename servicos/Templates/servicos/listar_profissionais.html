@@ -1,7 +1,12 @@
 {% extends 'servicos/base.html' %}
   {% block content %}  
     {% load static %}
-    <h2 style="margin: 1rem;">Resultados para: "{{servico}}"</h2>
+      {% if nome %}
+          <h2 style="margin: 1rem;">Resultados para: "{{ nome }}"</h2>
+      {% else %}
+          <h2 style="margin: 1rem;">Resultados para o serviço: "{{ servico }}"</h2>
+      {% endif %}
+    <div class="flex centralizar">
     {% for i in profissional %}
       <div class="flex" style="margin: 2rem 0 2rem 0 ;">
         <div class="card card_custom" >
@@ -18,22 +23,24 @@
           </div>
         </div>     
       </div>
+
     {% endfor %}
+    </div>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination flex" style="justify-content: center; padding-bottom: 2rem;">
-
-          <li class="page-item"><a class="page-link" href="">Primeira</a></li>
-          <li class="page-item"><a class="page-link" href="">Anterior</a></li>        
-
+    <nav aria-label="Page navigation example" class="flex centralizar">
+      <ul class="pagination">
+        {% if pag_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ pag_obj.1 }}">Primeira</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ pag_obj.previous_page_number }}">Anterior</a></li>        
+        {% endif %}
             
-        <li class="page-item"><a class="page-link" href="">2 de 4</a></li>
- 
-
-          <li class="page-item"><a class="page-link" href="">Próxima</a></li>
-          <li class="page-item"><a class="page-link" href="" style="border-top-right-radius: 0.375rem ;border-bottom-right-radius: 0.375rem ;">Última </a></li>          
-
-
+        <li class="page-item"><a class="page-link" href="?page={{ pag_obj.number }}">{{ pag_obj.number }} de {{ pag_obj.paginator.num_pages }}</a></li>
+  
+        {% if pag_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ pag_obj.next_page_number }}">Próxima</a></li>
+          <li class="page-item"><a class="page-link" href="?page={{ pag_obj.paginator.num_pages }}">Última </a></li>          
+        {% endif %}
+  
         <span class="current">
           
         </span>
@@ -41,22 +48,3 @@
     </nav>
   {% endblock %} 
 
-  <!-- <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      {% if pag_obj.has_previous %}
-        <li class="page-item"><a class="page-link" href="?page={{ pag_obj.1 }}">Primeira</a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ pag_obj.previous_page_number }}">Anterior</a></li>        
-      {% endif %}
-          
-      <li class="page-item"><a class="page-link" href="?page={{ pag_obj.number }}">{{ pag_obj.number }} de {{ pag_obj.paginator.num_pages }}</a></li>
-
-      {% if pag_obj.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ pag_obj.next_page_number }}">Próxima</a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ pag_obj.paginator.num_pages }}">Última </a></li>          
-      {% endif %}
-
-      <span class="current">
-        
-      </span>
-    </ul>
-  </nav> -->

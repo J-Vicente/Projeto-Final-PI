@@ -2,14 +2,39 @@ from django.shortcuts import render, redirect, get_object_or_404,redirect
 from .models import *
 from .form import *
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
     return render(request, "servicos/index.html")
 
 def listar(request, servico):
     profissional = Profissional.objects.filter(servico=servico)
-    context = {'profissional': profissional, 'servico':servico}
+    itens_por_pagina = 3
+    paginador = Paginator(profissional, itens_por_pagina)  
+    pagina = request.GET.get('page')
+    try:
+        pag_obj = paginador.page(pagina)
+    except PageNotAnInteger:
+        pag_obj = paginador.page(1)
+    except EmptyPage:
+        pag_obj = paginador.page(paginador.num_pages)
+
+    context = {'profissional': profissional, 'servico':servico, 'pag_obj': pag_obj}
     return render(request, "servicos/listar_profissionais.html",context)
+
+def buscar_profissionais(request):
+    nome = None  # Defina como None antes do bloco if
+    if 'q' in request.GET:
+        print('entrou no if')
+        termo_pesquisa = request.GET['q']
+        print(termo_pesquisa)
+        profissionais = Profissional.objects.buscar_por_nome(termo_pesquisa)
+        nome = termo_pesquisa 
+    else:
+        profissionais = Profissional.objects.all()
+
+    context = {'profissionais': profissionais, 'nome': nome}
+    return render(request, 'servicos/listar_profissionais.html', context)
 
 # -----------------------------------------------------------------------------------------------------
 
@@ -26,8 +51,8 @@ def perfil(request):
 
 def perfil_profissional(request):
     profissional = Profissional.objects.filter(nome=request.user.username).first()
-    print(profissional.nome)
-    context = {'profissional': profissional}
+    foto = Fotos_servico.objects.filter(profissional=profissional)
+    context = {'profissional': profissional, 'foto':foto}
     return render(request, "perfis/perfil_profissional.html", context)
 
 def perfil_cliente(request):
@@ -90,6 +115,21 @@ def cadastro_profissional(request):
 
     return render(request, "perfis/profissional_form.html", {'form': form})
 
+def fotos_profissional(request):
+    profissional = Profissional.objects.filter(nome=request.user.username).first()
+    if request.method == 'POST':
+        form = Fotos_servicoForm(request.POST,request.FILES)
+        if form.is_valid():
+            foto = form.save(commit=False)
+            foto.profissional = profissional
+            print(foto.profissional)
+            foto.save()
+            return redirect('perfil')
+    else:
+        form = Fotos_servicoForm()
+
+    return render(request, "perfis/fotos_form.html", {'form': form})
+
 # --------------------------------------------------------------------------------------------------------
 
 def contrato(request,id):
@@ -118,6 +158,11 @@ def contratos_clientes(request):
             i.confirmado = 'Confirmado'
         else:
             i.confirmado = 'Aguardando confiramção'
+
+        if i.ativo == True:
+            i.ativo = 'Ativo'
+        else:
+            i.ativo = 'Inativo'
          
     context = {'contrato': contrato, }
     return render(request, "servicos/contratos_cliente.html", context)
@@ -125,7 +170,7 @@ def contratos_clientes(request):
 def contrato_cancelar(request,id):
     contrato = get_object_or_404(Contrato, id=id)
     contrato.delete()
-    return redirect('contrato_clientes') 
+    return redirect('perfil') 
 
 def contratos_profissional(request):
     profissionais = Profissional.objects.filter(nome=request.user.username).first()
@@ -135,6 +180,11 @@ def contratos_profissional(request):
             i.confirmado = 'Confirmado'
         else:
             i.confirmado = 'Aguardando confiramção'
+
+        if i.ativo == True:
+            i.ativo = 'Ativo'
+        else:
+            i.ativo = 'Inativo'            
         
     context = {'contrato': contrato, }
     return render(request, "servicos/contratos_profissional.html", context)
