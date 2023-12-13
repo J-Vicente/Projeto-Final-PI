@@ -23,7 +23,7 @@ def listar(request, servico):
     return render(request, "servicos/listar_profissionais.html",context)
 
 def buscar_profissionais(request):
-    nome = None  # Defina como None antes do bloco if
+    nome = None 
     if 'q' in request.GET:
         print('entrou no if')
         termo_pesquisa = request.GET['q']
